@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOID - Výzkumná a Vývojová Laboratoř</title>
+    <meta name="description" content="Informace o projektech, tématech závěrečných prací a kontaktech laboratoře VOID.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+    </div>
+
+    <nav class="navbar glassmorphism">
+        <div class="container nav-content">
+            <div class="logo">VOID<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#projekty">Naše Projekty</a></li>
+                <li><a href="#temata">Závěrečné Práce</a></li>
+                <li><a href="#kontakty">Kontakty</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero container">
+        <h1>Inovace v dopravě a <span>optimalizaci</span></h1>
+        <p>V laboratoři VOID tvoříme realistické simulace, optimalizujeme trasy pro záchranné složky a posouváme hranice pomocí neuronových sítí.</p>
+        <a href="#projekty" class="btn-primary">Prozkoumat projekty</a>
+    </header>
+
+    <main>
+        <section id="projekty" class="container">
+            <h2 class="section-title">Naše Projekty</h2>
+            <div class="grid projects-grid">
+                
+                <!-- Projekt 1 -->
+                <div class="card glassmorphism">
+                    <img src="assets/traffic_sim.png" alt="Tvorba realistických simulací městského provozu" class="card-image">
+                    <div class="card-content">
+                        <h3>Tvorba realistických simulací městského provozu</h3>
+                        <p class="author">Vedení: Tim</p>
+                        <p>Téma tvorby realistických dopravních simulací na základě historických dat. Kombinujeme data z kamer, floating car data a dopravní statistiky pro vytvoření uceleného obrazu pohybu ve městě pomocí simulátorů jako SUMO.</p>
+                    </div>
+                </div>
+
+                <!-- Projekt 2 -->
+                <div class="card glassmorphism">
+                    <img src="assets/rescue_route.png" alt="Predikce tras vozidel záchranných složek" class="card-image">
+                    <div class="card-content">
+                        <h3>Predikce tras záchranných složek</h3>
+                        <p class="author">Vedení: Petr</p>
+                        <p>Zajištění plynulého průjezdu IZS pomocí komunikace se semafory a využití historických dat pro přesné předpovědi tras výjezdů.</p>
+                    </div>
+                </div>
+
+                <!-- Projekt 3 -->
+                <div class="card glassmorphism">
+                    <img src="assets/nn_vga.png" alt="NN VGA a optimalizace" class="card-image">
+                    <div class="card-content">
+                        <h3>NN VGA & Optimalizace</h3>
+                        <p class="author">Vedení: Adéla</p>
+                        <p>Nasazení a trénink neuronových sítí (NN VGA / VRP) pro pokročilé optimalizační úlohy v logistice a mobilitě.</p>
+                    </div>
+                </div>
+
+                <!-- Projekt 4 -->
+                <div class="card glassmorphism">
+                    <div class="card-image placeholder-img">
+                        <div class="icon">🎮</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Rush Hour Game</h3>
+                        <p class="author">Webové Demo</p>
+                        <p>Interaktivní logická hra demonstrující složitost dopravních problémů.</p>
+                        <a href="https://kubikade.github.io/rush_hour/" target="_blank" rel="noopener noreferrer" class="link-btn">Vyzkoušet Demo &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="temata" class="container">
+            <h2 class="section-title">Témata závěrečných prací</h2>
+            <p class="section-subtitle">Hledáme motivované studenty pro bakalářské i diplomové práce. Stačí nástřel, co student může dělat, detaily doladíme na míru.</p>
+            
+            <div class="accordion glassmorphism">
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Použití neuronových sítí pro optimalizaci Vehicle Routing problémů
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p><strong>Vedoucí:</strong> Adéla</p>
+                        <p>Práce na aktualizaci a rozvoji metod řešících Vehicle Routing Problem (VRP) s využitím moderních architektur neuronových sítí. Ideální pro studenty se zájmem o Deep Learning a aplikovanou AI.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Predikce tras vozidel záchranných složek na základě historických dat
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p><strong>Vedoucí:</strong> Petr</p>
+                        <p>Zpracování reálných historických trajektorií pro modelování výjezdů IZS. Cílem je včas komunikovat se semafory pro udělení prioritního průjezdu.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Rozvoj dopravních nástrojů v rámci FEL Hubu
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p><strong>Vedoucí:</strong> Dle domluvy</p>
+                        <p>Práce na údržbě a inovacích stávajících nástrojů. Smazání zastaralého roadgraphtool a aktualizace modelů pro záchranky a NN VRP.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Tvorba realistických simulací městského provozu
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p><strong>Vedoucí:</strong> Tim</p>
+                        <p>Spojování různých datových zdrojů (FCD, kamery, dopravní statistiky) pro stavbu komplexních modelů ve špičkových simulátorech (např. SUMO) a testování dopadů různých scénářů.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="kontakty" class="container">
+            <h2 class="section-title">Kontakty</h2>
+            <div class="grid contacts-grid">
+                <div class="contact-card glassmorphism">
+                    <div class="avatar">T</div>
+                    <h3>Tim</h3>
+                    <p>Dopravní simulace, SUMO</p>
+                    <a href="mailto:tim@fel.cvut.cz" class="contact-link">tim@fel.cvut.cz</a>
+                </div>
+                <div class="contact-card glassmorphism">
+                    <div class="avatar">A</div>
+                    <h3>Adéla</h3>
+                    <p>NN, VGA, VRP</p>
+                    <a href="mailto:adela@fel.cvut.cz" class="contact-link">adela@fel.cvut.cz</a>
+                </div>
+                <div class="contact-card glassmorphism">
+                    <div class="avatar">P</div>
+                    <h3>Petr</h3>
+                    <p>Data IZS, Predikce</p>
+                    <a href="mailto:petr@fel.cvut.cz" class="contact-link">petr@fel.cvut.cz</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: #8892b0;">
+                Kancelář: <em>Karlovo náměstí 13, Budova E, Místnost E-112 (Generický placeholder)</em>
+            </p>
+        </section>
+    </main>
+
+    <footer class="glassmorphism">
+        <div class="container">
+            <p>&copy; 2026 VOID Lab. Vytvořeno pro představení projektů.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
