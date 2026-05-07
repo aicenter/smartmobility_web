@@ -235,6 +235,10 @@ section {
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    /* Odstranění podtržení pro odkaz */
+    color: inherit;
+    /* Zachování barvy textu */
 }
 
 .card:hover {
@@ -439,6 +443,115 @@ footer {
 footer p {
     color: var(--text-secondary);
     font-size: 0.9rem;
+}
+
+/* Project Detail Pages */
+.hero-detail {
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 120px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 4rem;
+    border-bottom: 0px solid var(--glass-border);
+}
+
+.hero-detail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 25, 47, 0.4), var(--bg-color));
+    z-index: 1;
+}
+
+.hero-detail .container {
+    position: relative;
+    z-index: 2;
+}
+
+.back-btn {
+    position: absolute;
+    top: 100px;
+    left: 2rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    transform: translateX(-5px);
+}
+
+.project-content {
+    margin-bottom: 100px;
+}
+
+.project-content h2 {
+    color: var(--accent);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-content p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+}
+
+.project-content ul {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.project-content li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.project-content li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.video-container {
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16/9;
+    margin: 3rem 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .back-btn {
+        top: 80px;
+        left: 1rem;
+    }
 }
 
 /* Responsive */

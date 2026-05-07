@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulace městského provozu | AIC Smart Mobility</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-effects">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+    </div>
+
+    <nav class="navbar glassmorphism">
+        <div class="container nav-content">
+            <div class="logo">
+                <img src="assets/Symbol_AIC_Holo.svg" alt="AIC Logo" class="logo-img">
+                AIC Smart Mobility
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#projekty">Naše Projekty</a></li>
+                <li><a href="index.html#temata">Závěrečné Práce</a></li>
+                <li><a href="index.html#kontakty">Kontakty</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <a href="index.html" class="back-btn">&larr; Zpět na hlavní stránku</a>
+
+    <header class="hero-detail" style="background-image: url('assets/traffic_sim.png');">
+        <div class="container">
+            <h1>Simulace městského provozu</h1>
+            <p>Tvorba realistických modelů na základě historických dat pro moderní města.</p>
+        </div>
+    </header>
+
+    <main class="container project-content">
+        <div class="glassmorphism" style="padding: 3rem;">
+            <h2>O projektu</h2>
+            <p>Téma tvorby realistických dopravních simulací na základě historických dat je dnes důležité hlavně proto,
+                že města a dopravní systémy jsou čím dál složitější a nestačí je zkoumat jen teoreticky. Pokud chceme
+                dobře odhadnout, co se stane po změně semaforů, uzavírce, nové výstavbě nebo růstu dopravy, potřebujeme
+                simulaci, která se co nejvíc podobá skutečnému provozu.</p>
+
+            <p>Právě historická data umožňují stavět modely, které nejsou „umělé“, ale vycházejí z reálného chování
+                řidičů, intenzit dopravy i proměn během dne, týdne nebo různých sezón.</p>
+
+            <h2>Datové zdroje</h2>
+            <p>Pro takovou simulaci se dá využít víc typů dat, z nichž každé zachycuje jinou část reality:</p>
+            <ul>
+                <li>Záznamy z kamer a senzorů.</li>
+                <li>Floating car data z navigací nebo vozidel.</li>
+                <li>Klasické dopravní statistiky z měření intenzit.</li>
+                <li>Informace o městské aktivitě (kde lidé pracují, bydlí, nakupují).</li>
+            </ul>
+
+            <h2>Technologie SUMO</h2>
+            <p>Součástí této oblasti je práce se špičkovými dopravními simulátory, například <strong>SUMO</strong>
+                (Simulation of Urban MObility), které umožňují tato data převést do detailních modelů a následně
+                testovat různé scénáře bezpečně, levně a bez zásahu do skutečného provozu.</p>
+        </div>
+    </main>
+
+    <footer class="glassmorphism">
+        <div class="container">
+            <p>&copy; 2026 Artificial Intelligence Center, FEL, ČVUT</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
