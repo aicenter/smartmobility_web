@@ -1,0 +1,220 @@
+:root {
+    --bg-color: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent: #0d9488;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(13, 148, 136, 0.2);
+    --font-family: 'Inter', sans-serif;
+}
+
+@page {
+    size: A5;
+    margin: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 148mm;
+    height: 210mm;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    line-height: 1.4;
+    overflow: hidden;
+    position: relative;
+    padding: 10mm;
+}
+
+/* Background effects for print (subtle) */
+.background-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.2;
+}
+
+.glow-1 {
+    top: -5%;
+    left: -5%;
+    width: 100mm;
+    height: 100mm;
+    background: radial-gradient(circle, rgba(13, 148, 136, 0.2) 0%, rgba(248, 250, 252, 0) 70%);
+}
+
+.glow-2 {
+    bottom: -10%;
+    right: -5%;
+    width: 120mm;
+    height: 120mm;
+    background: radial-gradient(circle, rgba(192, 38, 211, 0.15) 0%, rgba(248, 250, 252, 0) 70%);
+}
+
+.flyer-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 5mm;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3mm;
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 5mm;
+    color: #0f172a;
+}
+
+.logo-img {
+    height: 15mm;
+    /* Remove glow effect or change it for light mode */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+h1 {
+    font-size: 1.6rem;
+    line-height: 1.1;
+    margin-bottom: 3mm;
+}
+
+h1 span {
+    color: var(--accent);
+    background: -webkit-linear-gradient(45deg, var(--accent), #c026d3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 5mm;
+}
+
+.glassmorphism {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 4mm;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.section {
+    margin-bottom: 5mm;
+}
+
+.section-title {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 2mm;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 1mm;
+}
+
+.projects-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+}
+
+.project-item {
+    font-size: 0.75rem;
+}
+
+.project-item h3 {
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    margin-bottom: 1mm;
+}
+
+.project-item p {
+    color: var(--text-secondary);
+    line-height: 1.2;
+}
+
+.thesis-cta {
+    text-align: center;
+}
+
+.thesis-cta h2 {
+    font-size: 1.1rem;
+    margin-bottom: 2mm;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5mm;
+    border-top: 1px solid var(--glass-border);
+}
+
+.qr-container {
+    background: white;
+    padding: 2mm;
+    border-radius: 8px;
+    width: 35mm;
+    height: 35mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.qr-code {
+    width: 100%;
+    height: 100%;
+}
+
+.contact-info {
+    flex: 1;
+    padding-left: 5mm;
+}
+
+.url {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1mm;
+}
+
+.copyright {
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+}
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
