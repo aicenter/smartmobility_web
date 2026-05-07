@@ -593,3 +593,37 @@ footer p {
         padding: 0 1.25rem 1.25rem;
     }
 }
+
+/* Video Grid and Elements */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.video-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.video-item video {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.video-item video:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(100, 255, 218, 0.15);
+    border-color: var(--accent);
+}
+
+.video-caption {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
