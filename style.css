@@ -547,6 +547,21 @@ footer p {
     border: none;
 }
 
+.project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(100, 255, 218, 0.15);
+    border-color: var(--accent);
+}
+
 @media (max-width: 768px) {
     .back-btn {
         top: 80px;
