@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-objective VRP - VOID lab</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Background elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <nav class="navbar glassmorphism">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <img src="assets/Symbol_AIC_Holo.svg" alt="AIC Logo" class="logo-img"
+                    onerror="this.style.display='none'">
+                AIC Smart Mobility</a>
+            <ul class="nav-links">
+                <li><a href="index.html#projekty">Naše Projekty</a></li>
+                <li><a href="index.html#temata">Závěrečné Práce</a></li>
+                <li><a href="index.html#kontakty">Kontakty</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <a href="index.html#projekty" class="back-btn">&larr; Zpět na projekty</a>
+
+    <header class="hero-detail" style="background-image: url('assets/vrp_hero_main.png');">
+        <div class="container">
+            <h1>Multi-objective <span>VRP</span></h1>
+        </div>
+    </header>
+
+    <main class="container project-content glassmorphism"
+        style="padding: 3rem; border-radius: 16px; margin-bottom: 4rem;">
+
+        <h2>O projektu</h2>
+        <p>Kapacitně omezený problém směrování vozidel (CVRP) patří k nejznámějším úlohám v optimalizaci logistiky. V
+            našem výzkumu řešíme jeho komplexnější variantu: <strong>Multi-Criteria VRP (MCVRP)</strong>. Naším cílem
+            není pouze minimalizovat celkovou ujetou vzdálenost (ekonomické hledisko), ale zároveň zajistit spravedlivé
+            rozložení práce mezi jednotlivé kurýry neboli vyváženost tras (sociální hledisko). Tento kompromis mezi
+            dvěma kritérii tvoří tzv. Pareto frontu řešení. K nalezení těchto tras využíváme silný vícekriteriální
+            evoluční algoritmus <strong>NSGA-II</strong> (Non-dominated Sorting Genetic Algorithm II).</p>
+        <p>Ačkoliv je algoritmus NSGA-II velmi efektivní, při řešení těchto NP-těžkých úloh u větších městských instancí
+            (stovky zastávek naráz) naráží na limity kvůli exponenciálnímu nárůstu výpočetní složitosti vyhledávacího
+            prostoru.</p>
+
+        <h2>Proč problém dekomponujeme?</h2>
+        <p>Abychom překonali limity výpočetní náročnosti při nasazení algoritmu NSGA-II na celá města, využíváme
+            paradigma <strong>„Cluster-First, Route-Second“</strong> (Nejprve shlukuj, pak plánuj trasu). Místo snahy o
+            evoluční vyřešení celého problému naráz ho rozpadáme na menší a nezávislé podúlohy.</p>
+        <p>Tímto rozdělením drasticky zmenšujeme prostor možných řešení. Každému vozidlu je nejprve přidělena
+            geograficky a kapacitně smysluplná skupina zastávek, a až následně se na ni aplikuje NSGA-II, který najde
+            ideální pořadí, v jakém zastávky fyzicky objet.</p>
+
+        <h2>Jak to zjednodušujeme (Naše architektura)</h2>
+        <p>Náš hybridní přístup kombinuje moderní strojové učení s extrémně rychlým evolučním výpočtem (NSGA-II):</p>
+        <ul>
+            <li><strong>Fáze 1: Predikce prostorové topologie pomocí GNN (Python)</strong><br>
+                Místo zdlouhavého heuristického prohledávání nasazujeme <em>Graph neural network</em>. Síť se na
+                základě historických dat (vygenerovaných dlouhými běhy našeho NSGA-II solveru) učí chápat prostorové
+                závislosti a kapacitní omezení. U každé hrany predikuje pravděpodobnost společné obsluhy. O samotné
+                vytvoření platných skupin se pak postará rychlý post-processing shlukovací algoritmus.</li>
+
+            <li><strong>Fáze 2: Mikrosměrování pomocí NSGA-II solveru (Rust)</strong><br>
+                Jakmile GNN určí, "kdo obslouží koho", předáváme tyto malé izolované shluky <em>NSGA-II solveru</em>.
+                Tento NSGA-II algoritmus pak
+                uvnitř každého shluku řeší finální nalezení tras na Pareto frontě, optimalizující vzdálenost i
+                vyváženost. Díky aplikaci na malé zlomky původního problému nachází NSGA-II svá řešení bleskově rychle.
+            </li>
+        </ul>
+
+        <h2>Čeho chceme dosáhnout</h2>
+        <ul>
+            <li><strong>Znalost skrytých pravidel:</strong> Cílem je, aby neuronová síť dokázala z trénovacích dat
+                odvodit komplexní
+                pravidla chování flotily, aniž by musela složitě simulovat samotný průjezd trasou.</li>
+            <li><strong>Zaručená validita řešení:</strong> Neuronové sítě samy o sobě jen velmi obtížně zaručují splnění
+                striktních omezujících podmínek (tzv. hard constraints), jako je například maximální kapacita vozidla.
+                Proto striktně oddělujeme volnou predikci sítě od následného shlukovacího algoritmu, který stoprocentně
+                kontroluje splnitelnost a garantuje, že systém nikdy nenavrhne přetížené vozidlo.</li>
+            <li><strong>Skokové zrychlení výpočtu:</strong> Naší hlavní ambicí je, aby kvalitní predikce z GNN radikálně
+                zúžily vyhledávací prostor pro evoluční algoritmus. NSGA-II tak bude moci najít Pareto optimální řešení
+                v reálném čase i pro takové instance, které by jinak trvalo vyřešit hodiny.
+            </li>
+        </ul>
+
+        <h2>Interaktivní ukázka výsledků</h2>
+        <p>Pro lepší představu o tom, jak algoritmus NSGA-II řeší problém MCVRP, jsme připravili interaktivní
+            vizualizér. V něm si můžete prohlédnout řešení pro konkrétní instanci:</p>
+        <ul>
+            <li><strong>Best Known Solution:</strong> Zobrazení historicky nejlepšího známého řešení čistě z hlediska
+                celkové ujeté vzdálenosti (ekonomické optimum).</li>
+            <li><strong>Pareto fronta (NSGA-II):</strong> Výsledná množina kompromisních řešení z našeho
+                vícekriteriálního problému. Můžete si interaktivně procházet a vizualizovat různé varianty rozložení
+                tras (tzv. trade-offs) mezi celkovou délkou a spravedlivou zátěží kurýrů.</li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="mcvrp_viewer.html" target="_blank" class="link-btn"
+                style="padding: 12px 24px; font-size: 1.1rem; display: inline-block; background-color: var(--primary-color, #3b82f6); color: white; border-radius: 8px; text-decoration: none; transition: transform 0.2s;">
+                Spustit interaktivní vizualizaci řešení &rarr;
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="glassmorphism">
+        <div class="container">
+            <p>&copy; 2026 Artificial Intelligence Center, FEL, ČVUT</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NN Boosted VGA | AIC Smart Mobility</title>
+    <meta name="description"
+        content="Zrychlení exaktního plánování dopravy na vyžádání pomocí predikce proveditelnosti neuronovými sítěmi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-effects">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+    </div>
+
+    <nav class="navbar glassmorphism">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <img src="assets/Symbol_AIC_Holo.svg" alt="AIC Logo" class="logo-img"
+                    onerror="this.style.display='none'">
+                AIC Smart Mobility</a>
+            <ul class="nav-links">
+                <li><a href="index.html#projekty">Naše Projekty</a></li>
+                <li><a href="index.html#temata">Závěrečné Práce</a></li>
+                <li><a href="index.html#kontakty">Kontakty</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <a href="index.html#projekty" class="back-btn">&larr; Zpět na projekty</a>
+
+    <header class="hero-detail" style="background-image: url('assets/nn_boosted_vga.png');">
+        <div class="container">
+            <h1>NN Boosted <span>VGA</span></h1>
+        </div>
+    </header>
+
+    <main class="container project-content glassmorphism"
+        style="padding: 3rem; border-radius: 16px; margin-bottom: 4rem;">
+
+        <h2>O projektu</h2>
+        <p>Problém Dial-a-Ride (DARP) – tedy efektivní plánování svozu a rozvozu cestujících s ohledem na jejich časové
+            požadavky a kapacitu vozidel – je základním kamenem moderních systémů mobility na vyžádání
+            (Mobility-on-Demand). Jednou z nejpřesnějších metod pro jeho řešení je algoritmus Vehicle-Group Assignment
+            (VGA). Jeho hlavní slabinou je však extrémní výpočetní náročnost tzv. kontrol proveditelnosti (feasibility
+            checks), které musí u každé skupiny požadavků ověřit, zda je fyzicky možné je obsloužit jedním vozem.</p>
+        <p>Tradiční přístupy kombinatorické optimalizace zde inovujeme pomocí technik strojového učení. Navrhujeme
+            využití klasifikátoru na bázi neuronové sítě, který dokáže s vysokou přesností předpovědět proveditelnost
+            plánu dříve, než dojde k samotnému výpočtu. Tímto „prořezáváním“ (pruningem) neperspektivních variant
+            radikálně zrychlujeme celý proces hledání řešení.</p>
+
+        <!-- VGA Pipeline Diagram - SVG -->
+        <div class="project-image" style="padding: 1.5rem; background: rgba(10,25,47,0.5);">
+            <svg viewBox="0 0 1100 340" xmlns="http://www.w3.org/2000/svg"
+                style="width:100%;display:block;font-family:'Inter',sans-serif;"
+                aria-label="VGA Algorithm Pipeline Diagram">
+                <defs>
+                    <filter id="glow-cyan">
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                    <filter id="glow-red">
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                    <filter id="glow-magenta">
+                        <feGaussianBlur stdDeviation="4" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                    <filter id="glow-purple">
+                        <feGaussianBlur stdDeviation="4" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                    <!-- Filter for near-horizontal lines where objectBoundingBox is degenerate -->
+                    <filter id="glow-purple-h" filterUnits="userSpaceOnUse" x="780" y="60" width="280" height="50">
+                        <feGaussianBlur stdDeviation="4" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                    <filter id="glow-purple-legend" filterUnits="userSpaceOnUse" x="885" y="293" width="60" height="30">
+                        <feGaussianBlur stdDeviation="4" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                    <filter id="glow-cyan-h" filterUnits="userSpaceOnUse" x="420" y="60" width="250" height="50">
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                    <filter id="glow-red-h" filterUnits="userSpaceOnUse" x="420" y="145" width="250" height="50">
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                    <marker id="arrow-cyan" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L8,3 z" fill="#64ffda" />
+                    </marker>
+                    <!-- Reusable person icon, head centred at (0,0) -->
+                    <symbol id="person" overflow="visible">
+                        <circle cx="0" cy="0" r="5" fill="none" stroke="#64ffda" stroke-width="1.4" />
+                        <line x1="0" y1="5" x2="0" y2="17" stroke="#64ffda" stroke-width="1.4" />
+                        <line x1="0" y1="9" x2="-6" y2="16" stroke="#64ffda" stroke-width="1.4" />
+                        <line x1="0" y1="9" x2="6" y2="16" stroke="#64ffda" stroke-width="1.4" />
+                        <line x1="0" y1="17" x2="-5" y2="26" stroke="#64ffda" stroke-width="1.4" />
+                        <line x1="0" y1="17" x2="5" y2="26" stroke="#64ffda" stroke-width="1.4" />
+                    </symbol>
+                </defs>
+
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- SECTION 1: INPUTS (x: 0-200) -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- Passengers (top half) -->
+                <use href="#person" transform="translate(55,68)" filter="url(#glow-cyan)" opacity="0.9" />
+                <use href="#person" transform="translate(95,62)" filter="url(#glow-cyan)" opacity="0.9" />
+                <use href="#person" transform="translate(135,70)" filter="url(#glow-cyan)" opacity="0.9" />
+                <use href="#person" transform="translate(75,58)" filter="url(#glow-cyan)" opacity="0.7" />
+                <!-- Cars (bottom half) - simple side-view car shapes -->
+                <!-- Car 1 -->
+                <g filter="url(#glow-cyan)" opacity="0.9" transform="translate(30, 155)">
+                    <rect x="0" y="14" width="60" height="22" rx="4" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <path d="M10,14 L18,2 L42,2 L50,14" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="12" cy="36" r="7" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="48" cy="36" r="7" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                </g>
+                <!-- Car 2 -->
+                <g filter="url(#glow-cyan)" opacity="0.9" transform="translate(100, 195)">
+                    <rect x="0" y="14" width="60" height="22" rx="4" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <path d="M10,14 L18,2 L42,2 L50,14" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="12" cy="36" r="7" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="48" cy="36" r="7" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                </g>
+                <!-- Car 3 -->
+                <g filter="url(#glow-cyan)" opacity="0.7" transform="translate(30, 230)">
+                    <rect x="0" y="14" width="60" height="22" rx="4" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <path d="M10,14 L18,2 L42,2 L50,14" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="12" cy="36" r="7" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="48" cy="36" r="7" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                </g>
+                <!-- Label -->
+                <text x="95" y="306" text-anchor="middle" fill="#8892b0" font-size="13">Inputs</text>
+
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- ARROW 1 -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <line x1="195" y1="160" x2="238" y2="160" stroke="#64ffda" stroke-width="2.5"
+                    marker-end="url(#arrow-cyan)" filter="url(#glow-cyan)" />
+
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- SECTION 2: GROUP GENERATION (x: 240-430) -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- G1 bubble -->
+                <circle cx="310" cy="80" r="45" fill="rgba(100,255,218,0.04)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="310" y="72" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="600">G1</text>
+                <!-- persons inside G1 -->
+                <use href="#person" transform="translate(296,84) scale(0.72)" filter="url(#glow-cyan)" opacity="0.8" />
+                <use href="#person" transform="translate(318,82) scale(0.72)" filter="url(#glow-cyan)" opacity="0.8" />
+                <!-- pin icon -->
+                <text x="328" y="78" fill="#64ffda" font-size="11" opacity="0.8">📍</text>
+                <!-- G2 bubble -->
+                <circle cx="310" cy="170" r="45" fill="rgba(100,255,218,0.04)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="310" y="162" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="600">G2</text>
+                <use href="#person" transform="translate(291,174) scale(0.72)" filter="url(#glow-cyan)" opacity="0.8" />
+                <use href="#person" transform="translate(308,171) scale(0.72)" filter="url(#glow-cyan)" opacity="0.8" />
+                <use href="#person" transform="translate(325,174) scale(0.72)" filter="url(#glow-cyan)" opacity="0.8" />
+                <text x="328" y="168" fill="#64ffda" font-size="11" opacity="0.8">🕐</text>
+                <!-- G3 bubble -->
+                <circle cx="310" cy="260" r="45" fill="rgba(100,255,218,0.04)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="310" y="252" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="600">G3</text>
+                <use href="#person" transform="translate(298,263) scale(0.72)" filter="url(#glow-cyan)" opacity="0.8" />
+                <use href="#person" transform="translate(318,261) scale(0.72)" filter="url(#glow-cyan)" opacity="0.8" />
+                <text x="328" y="258" fill="#64ffda" font-size="11" opacity="0.8">📍</text>
+                <!-- Label -->
+                <text x="310" y="325" text-anchor="middle" fill="#8892b0" font-size="13">Step 1 - Group
+                    Generation</text>
+
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- ARROW 2 -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <line x1="360" y1="160" x2="400" y2="160" stroke="#64ffda" stroke-width="2.5"
+                    marker-end="url(#arrow-cyan)" filter="url(#glow-cyan)" />
+
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- SECTION 3: FEASIBILITY CHECK (x: 405-720) -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- Left: G nodes -->
+                <circle cx="430" cy="80" r="18" fill="rgba(100,255,218,0.08)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="430" y="85" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">G1</text>
+                <circle cx="430" cy="170" r="18" fill="rgba(100,255,218,0.08)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="430" y="175" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">G2</text>
+                <circle cx="430" cy="260" r="18" fill="rgba(100,255,218,0.08)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="430" y="265" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">G3</text>
+                <!-- Right: V nodes (car icons) -->
+                <!-- V1 car -->
+                <g filter="url(#glow-cyan)" transform="translate(648, 58)">
+                    <rect x="0" y="12" width="52" height="18" rx="4" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <path d="M8,12 L15,2 L37,2 L44,12" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="10" cy="30" r="6" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="42" cy="30" r="6" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                </g>
+                <text x="674" y="105" text-anchor="middle" fill="#64ffda" font-size="12" font-weight="600">V1</text>
+                <!-- V2 car -->
+                <g filter="url(#glow-cyan)" transform="translate(648, 148)">
+                    <rect x="0" y="12" width="52" height="18" rx="4" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <path d="M8,12 L15,2 L37,2 L44,12" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="10" cy="30" r="6" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="42" cy="30" r="6" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                </g>
+                <text x="674" y="195" text-anchor="middle" fill="#64ffda" font-size="12" font-weight="600">V2</text>
+                <!-- V3 car -->
+                <g filter="url(#glow-cyan)" transform="translate(648, 238)">
+                    <rect x="0" y="12" width="52" height="18" rx="4" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <path d="M8,12 L15,2 L37,2 L44,12" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="10" cy="30" r="6" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                    <circle cx="42" cy="30" r="6" fill="none" stroke="#64ffda" stroke-width="1.5" />
+                </g>
+                <text x="674" y="285" text-anchor="middle" fill="#64ffda" font-size="12" font-weight="600">V3</text>
+
+                <!-- Connections: FEASIBLE = solid cyan, INFEASIBLE = dashed red -->
+                <!-- G1 → V1: FEASIBLE -->
+                <line x1="448" y1="76" x2="648" y2="80" stroke="#64ffda" stroke-width="1.5" filter="url(#glow-cyan-h)"
+                    opacity="0.8" />
+                <!-- G1 → V2: INFEASIBLE -->
+                <line x1="448" y1="82" x2="648" y2="164" stroke="#ff4444" stroke-width="1.5" stroke-dasharray="6,4"
+                    filter="url(#glow-red)" opacity="0.75" />
+                <!-- G1 → V3: FEASIBLE -->
+                <line x1="448" y1="86" x2="648" y2="250" stroke="#64ffda" stroke-width="1.5" filter="url(#glow-cyan)"
+                    opacity="0.8" />
+                <!-- G2 → V1: INFEASIBLE -->
+                <line x1="448" y1="163" x2="648" y2="83" stroke="#ff4444" stroke-width="1.5" stroke-dasharray="6,4"
+                    filter="url(#glow-red)" opacity="0.75" />
+                <!-- G2 → V2: INFEASIBLE -->
+                <line x1="448" y1="164" x2="648" y2="163" stroke="#ff4444" stroke-width="1.5" stroke-dasharray="6,4"
+                    filter="url(#glow-red-h)" opacity="0.9" />
+                <!-- G2 → V3: FEASIBLE -->
+                <line x1="448" y1="177" x2="648" y2="253" stroke="#64ffda" stroke-width="1.5" filter="url(#glow-cyan)"
+                    opacity="0.8" />
+                <!-- G3 → V1: FEASIBLE -->
+                <line x1="448" y1="250" x2="648" y2="86" stroke="#64ffda" stroke-width="1.5" filter="url(#glow-cyan)"
+                    opacity="0.8" />
+                <!-- G3 → V2: FEASIBLE -->
+                <line x1="448" y1="256" x2="648" y2="172" stroke="#64ffda" stroke-width="1.5" filter="url(#glow-cyan)"
+                    opacity="0.8" />
+                <!-- G3 → V3: FEASIBLE -->
+                <line x1="448" y1="262" x2="648" y2="258" stroke="#64ffda" stroke-width="1.5" filter="url(#glow-cyan)"
+                    opacity="0.8" />
+
+                <!-- Legend -->
+                <line x1="430" y1="308" x2="460" y2="308" stroke="#64ffda" stroke-width="1.5" />
+                <text x="465" y="312" fill="#8892b0" font-size="11">feasible</text>
+                <line x1="530" y1="308" x2="560" y2="308" stroke="#ff4444" stroke-width="1.5" stroke-dasharray="5,3" />
+                <text x="565" y="312" fill="#8892b0" font-size="11">infeasible</text>
+                <!-- Label -->
+                <text x="554" y="325" text-anchor="middle" fill="#8892b0" font-size="13">Step 2 - Feasibility Check
+                    &amp;
+                    Routing</text>
+
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- ARROW 3 -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <line x1="724" y1="160" x2="762" y2="160" stroke="#64ffda" stroke-width="2.5"
+                    marker-end="url(#arrow-cyan)" filter="url(#glow-cyan)" />
+
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- SECTION 4: VEHICLE-GROUP ASSIGNMENT (x: 765-1100) -->
+                <!-- ═══════════════════════════════════════════════════ -->
+                <!-- Left: G nodes -->
+                <circle cx="800" cy="80" r="18" fill="rgba(100,255,218,0.08)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="800" y="85" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">G1</text>
+                <circle cx="800" cy="170" r="18" fill="rgba(100,255,218,0.08)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="800" y="175" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">G2</text>
+                <circle cx="800" cy="260" r="18" fill="rgba(100,255,218,0.08)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="800" y="265" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">G3</text>
+
+                <!-- Right: V nodes -->
+                <circle cx="1040" cy="80" r="18" fill="rgba(100,255,218,0.08)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="1040" y="85" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">V1</text>
+                <circle cx="1040" cy="170" r="18" fill="rgba(100,255,218,0.08)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="1040" y="175" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">V2</text>
+                <circle cx="1040" cy="260" r="18" fill="rgba(100,255,218,0.08)" stroke="#64ffda" stroke-width="1.5"
+                    filter="url(#glow-cyan)" />
+                <text x="1040" y="265" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">V3</text>
+
+                <!-- Feasible (thin cyan): G1→V1, G1→V3, G2→V3, G3→V1, G3→V2, G3→V3 wrong labels here -->
+                <line x1="818" y1="84" x2="1022" y2="254" stroke="#64ffda" stroke-width="1" opacity="0.35" />
+                <line x1="818" y1="252" x2="1022" y2="82" stroke="#64ffda" stroke-width="1" opacity="0.35" />
+                <line x1="818" y1="264" x2="1022" y2="262" stroke="#64ffda" stroke-width="1" opacity="0.35" />
+
+                <!-- Final assignment (thick purple): G1→V1, G2→V3, G3→V2 -->
+                <line x1="818" y1="84" x2="1022" y2="82" stroke="#8b5cf6" stroke-width="3.5"
+                    filter="url(#glow-purple-h)" opacity="0.95" />
+                <line x1="818" y1="174" x2="1022" y2="262" stroke="#8b5cf6" stroke-width="3.5"
+                    filter="url(#glow-purple)" opacity="0.95" />
+                <line x1="818" y1="256" x2="1022" y2="172" stroke="#8b5cf6" stroke-width="3.5"
+                    filter="url(#glow-purple)" opacity="0.95" />
+
+                <!-- Legend -->
+                <line x1="800" y1="308" x2="830" y2="308" stroke="#64ffda" stroke-width="1.2" opacity="0.5" />
+                <text x="835" y="312" fill="#8892b0" font-size="11">feasible</text>
+                <line x1="900" y1="308" x2="930" y2="308" stroke="#8b5cf6" stroke-width="3.5" opacity="0.95"
+                    filter="url(#glow-purple-legend)" />
+                <text x="935" y="312" fill="#8892b0" font-size="11">assignment</text>
+
+                <!-- Label -->
+                <text x="920" y="325" text-anchor="middle" fill="#8892b0" font-size="13">Step 3 - Vehicle-Group
+                    Assignment
+                    (ILP)</text>
+            </svg>
+        </div>
+
+
+        <h2>Architektura modelů</h2>
+        <p>V rámci výzkumu jsme vyvinuli a porovnali dvě varianty neuronových architektur pro práci s různě velkými
+            skupinami požadavků:</p>
+        <ul>
+            <li><strong>Per group size model:</strong> Sada specializovaných modelů trénovaných pro konkrétní velikosti
+                skupin, dosahující maximální přesnosti.</li>
+            <li><strong>Transformative model:</strong> Univerzální model schopný zpracovat libovolně velké skupiny díky
+                transformaci vstupních dat na jednotnou reprezentaci.</li>
+        </ul>
+
+        <h2>Klíčové výsledky</h2>
+        <p>Náš přístup jsme testovali na reálných datech z dopravy v Manhattanu a výsledky prezentovali na mezinárodní
+            konferenci ICAART. Mezi hlavní přínosy patří:</p>
+        <ul>
+            <li><strong>Zrychlení bez ztráty kvality:</strong> Model per group size dokázal zrychlit výpočet při
+                zachování 100% optimality původního řešení.</li>
+            <li><strong>Efektivnější než běžné heuristiky:</strong> Navržená metoda dosahuje lepších výsledků v poměru
+                „cena řešení vs. čas výpočtu“ než standardně používané algoritmy (ALNS nebo IH).</li>
+            <li><strong>Extrémní výkon:</strong> V nejrychlejší konfiguraci překonal náš model i pokročilou heuristiku
+                ALNS, a to při zachování výrazně nižších provozních nákladů (o cca 3 % oproti optimu).</li>
+        </ul>
+
+        <div class="charts-container"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin: 3rem 0;">
+            <!-- Chart 1: Computation Time -->
+            <div class="project-image" style="padding: 1.5rem 1rem 1rem 1rem; background: rgba(10,25,47,0.5);">
+                <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg"
+                    style="width:100%;display:block;font-family:'Inter',sans-serif;">
+                    <defs>
+                        <filter id="glow-cyan-bar">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <filter id="glow-red-bar">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <filter id="glow-purple-bar">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <filter id="glow-magenta-bar">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <filter id="glow-blue-bar">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <text x="250" y="20" text-anchor="middle" fill="#ccd6f6" font-size="16"
+                        font-weight="700">Computation Time</text>
+
+                    <text x="-140" y="10" transform="rotate(-90)" fill="#8892b0" font-size="12" font-weight="600"
+                        text-anchor="middle">Total Time [min]</text>
+                        
+                    <g transform="translate(15, 0)">
+                        <g fill="#8892b0" font-size="11" text-anchor="end">
+                            <text x="45" y="44">80 -</text>
+                            <line x1="55" y1="40" x2="480" y2="40" stroke="#233554" stroke-width="1" />
+                            <text x="45" y="94">60 -</text>
+                            <line x1="55" y1="90" x2="480" y2="90" stroke="#233554" stroke-width="1" />
+                            <text x="45" y="144">40 -</text>
+                            <line x1="55" y1="140" x2="480" y2="140" stroke="#233554" stroke-width="1" />
+                            <text x="45" y="194">20 -</text>
+                            <line x1="55" y1="190" x2="480" y2="190" stroke="#233554" stroke-width="1" />
+                            <text x="45" y="244">0 -</text>
+                            <line x1="55" y1="240" x2="480" y2="240" stroke="#8892b0" stroke-width="1.5" />
+                        </g>
+
+                    <!-- Bars -->
+                    <rect x="80" y="72.75" width="40" height="167.25" fill="rgba(100,255,218,0.15)" stroke="#64ffda"
+                        stroke-width="1.5" filter="url(#glow-cyan-bar)" />
+                    <text x="100" y="64" text-anchor="middle" fill="#e6f1ff" font-size="12"
+                        font-weight="700">66.9</text>
+
+                    <rect x="160" y="238" width="40" height="2" fill="rgba(255,68,68,0.15)" stroke="#ff4444"
+                        stroke-width="1.5" filter="url(#glow-red-bar)" />
+                    <text x="180" y="230" text-anchor="middle" fill="#e6f1ff" font-size="12"
+                        font-weight="700">&lt;0.01</text>
+
+                    <rect x="240" y="131.25" width="40" height="108.75" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6"
+                        stroke-width="1.5" filter="url(#glow-purple-bar)" />
+                    <text x="260" y="122" text-anchor="middle" fill="#e6f1ff" font-size="12"
+                        font-weight="700">43.5</text>
+
+                    <rect x="320" y="142.25" width="40" height="97.75" fill="rgba(200,80,192,0.15)" stroke="#c850c0"
+                        stroke-width="1.5" filter="url(#glow-magenta-bar)" />
+                    <text x="340" y="133" text-anchor="middle" fill="#e6f1ff" font-size="12"
+                        font-weight="700">39.1</text>
+
+                    <rect x="400" y="176.75" width="40" height="63.25" fill="rgba(79,172,254,0.15)" stroke="#4facfe"
+                        stroke-width="1.5" filter="url(#glow-blue-bar)" />
+                    <text x="420" y="168" text-anchor="middle" fill="#e6f1ff" font-size="12"
+                        font-weight="700">25.3</text>
+
+                    <!-- X Labels -->
+                    <g fill="#8892b0" font-size="11" font-weight="600" text-anchor="middle">
+                        <text x="100" y="262">VGA</text><text x="100" y="276">Optimal</text>
+                        <text x="180" y="262">IH</text><text x="180" y="276">Heuristic</text>
+                        <text x="260" y="262">ALNS</text><text x="260" y="276">Heuristic</text>
+                        <text x="340" y="262">Per Group</text><text x="340" y="276">(th=0.3)</text>
+                        <text x="420" y="262">Transformative</text><text x="420" y="276">(th=0.5)</text>
+                    </g>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Chart 2: Solution Cost -->
+            <div class="project-image" style="padding: 1.5rem 1rem 1rem 1rem; background: rgba(10,25,47,0.5);">
+                <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg"
+                    style="width:100%;display:block;font-family:'Inter',sans-serif;">
+                    <text x="250" y="20" text-anchor="middle" fill="#ccd6f6" font-size="16" font-weight="700">Solution
+                        Cost</text>
+
+                    <text x="-140" y="10" transform="rotate(-90)" fill="#8892b0" font-size="12" font-weight="600"
+                        text-anchor="middle">Solution Cost [min]</text>
+
+                    <g transform="translate(15, 0)">
+                        <g fill="#8892b0" font-size="11" text-anchor="end">
+                            <text x="45" y="44">4000 -</text>
+                            <line x1="55" y1="40" x2="480" y2="40" stroke="#233554" stroke-width="1" />
+                            <text x="45" y="76.4">3800 -</text>
+                            <line x1="55" y1="76.4" x2="480" y2="76.4" stroke="#233554" stroke-width="1" />
+                            <text x="45" y="112.7">3600 -</text>
+                            <line x1="55" y1="112.7" x2="480" y2="112.7" stroke="#233554" stroke-width="1" />
+                            <text x="45" y="149.1">3400 -</text>
+                            <line x1="55" y1="149.1" x2="480" y2="149.1" stroke="#233554" stroke-width="1" />
+                            <text x="45" y="185.5">3200 -</text>
+                            <line x1="55" y1="185.5" x2="480" y2="185.5" stroke="#233554" stroke-width="1" />
+                            <text x="45" y="221.8">3000 -</text>
+                            <line x1="55" y1="221.8" x2="480" y2="221.8" stroke="#233554" stroke-width="1" />
+                            <text x="45" y="244">2900 -</text>
+                            <line x1="55" y1="240" x2="480" y2="240" stroke="#8892b0" stroke-width="1.5" />
+                        </g>
+
+                    <!-- Bars -->
+                    <rect x="80" y="225.46" width="40" height="14.54" fill="rgba(100,255,218,0.15)" stroke="#64ffda"
+                        stroke-width="1.5" filter="url(#glow-cyan-bar)" />
+                    <text x="100" y="216" text-anchor="middle" fill="#e6f1ff" font-size="12"
+                        font-weight="700">2980</text>
+
+                    <rect x="160" y="55.28" width="40" height="184.72" fill="rgba(255,68,68,0.15)" stroke="#ff4444"
+                        stroke-width="1.5" filter="url(#glow-red-bar)" />
+                    <text x="180" y="46" text-anchor="middle" fill="#e6f1ff" font-size="12"
+                        font-weight="700">3916</text>
+
+                    <rect x="240" y="136.19" width="40" height="103.81" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6"
+                        stroke-width="1.5" filter="url(#glow-purple-bar)" />
+                    <text x="260" y="127" text-anchor="middle" fill="#e6f1ff" font-size="12"
+                        font-weight="700">3471</text>
+
+                    <rect x="320" y="225.46" width="40" height="14.54" fill="rgba(200,80,192,0.15)" stroke="#c850c0"
+                        stroke-width="1.5" filter="url(#glow-magenta-bar)" />
+                    <text x="340" y="216" text-anchor="middle" fill="#e6f1ff" font-size="12"
+                        font-weight="700">2980</text>
+
+                    <rect x="400" y="208.73" width="40" height="31.27" fill="rgba(79,172,254,0.15)" stroke="#4facfe"
+                        stroke-width="1.5" filter="url(#glow-blue-bar)" />
+                    <text x="420" y="199" text-anchor="middle" fill="#e6f1ff" font-size="12"
+                        font-weight="700">3072</text>
+
+                    <!-- X Labels -->
+                    <g fill="#8892b0" font-size="11" font-weight="600" text-anchor="middle">
+                        <text x="100" y="262">VGA</text><text x="100" y="276">Optimal</text>
+                        <text x="180" y="262">IH</text><text x="180" y="276">Heuristic</text>
+                        <text x="260" y="262">ALNS</text><text x="260" y="276">Heuristic</text>
+                        <text x="340" y="262">Per Group</text><text x="340" y="276">(th=0.3)</text>
+                        <text x="420" y="262">Transformative</text><text x="420" y="276">(th=0.5)</text>
+                    </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="glassmorphism">
+        <div class="container">
+            <p>&copy; 2026 Artificial Intelligence Center, FEL, ČVUT</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
