@@ -13,6 +13,11 @@
     margin: 0;
 }
 
+html {
+    margin: 0;
+    padding: 0;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -20,9 +25,13 @@
 }
 
 body {
-    width: 148mm;
-    height: 210mm;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
     background-color: var(--bg-color);
+    background-image: url('assets/flyer_bg.png');
+    background-size: cover;
+    background-position: center;
     color: var(--text-primary);
     font-family: var(--font-family);
     line-height: 1.4;
@@ -46,8 +55,8 @@ body {
 .glow {
     position: absolute;
     border-radius: 50%;
-    filter: blur(50px);
-    opacity: 0.3;
+    filter: blur(60px);
+    opacity: 0.15;
 }
 
 .glow-1 {
@@ -55,7 +64,7 @@ body {
     left: -5%;
     width: 100mm;
     height: 100mm;
-    background: radial-gradient(circle, rgba(100, 255, 218, 0.2) 0%, rgba(10, 25, 47, 0) 70%);
+    background: radial-gradient(circle, rgba(100, 255, 218, 0.3) 0%, rgba(10, 25, 47, 0) 70%);
 }
 
 .glow-2 {
@@ -63,7 +72,7 @@ body {
     right: -5%;
     width: 120mm;
     height: 120mm;
-    background: radial-gradient(circle, rgba(200, 80, 192, 0.2) 0%, rgba(10, 25, 47, 0) 70%);
+    background: radial-gradient(circle, rgba(200, 80, 192, 0.3) 0%, rgba(10, 25, 47, 0) 70%);
 }
 
 .flyer-content {
@@ -86,6 +95,8 @@ body {
     font-weight: 800;
     font-size: 1.2rem;
     margin-bottom: 5mm;
+    color: var(--text-primary);
+    text-decoration: none;
 }
 
 .logo-img {
@@ -210,7 +221,10 @@ h1 span {
 
 @media print {
     body {
+        width: 148mm;
+        height: 210mm;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+        overflow: hidden;
     }
 }
