@@ -12,7 +12,7 @@
             font-family: 'Inter', sans-serif;
             background-color: transparent;
             margin: 0;
-            padding: 0;
+            padding: 0 0 100px 0;
             color: #e2e8f0;
         }
         .controls {
@@ -59,8 +59,8 @@
             padding: 10px;
             box-sizing: border-box;
         }
-        #map-container { height: 60vh; }
-        #pareto-container { height: 35vh; }
+        #map-container { height: 60vh; min-height: 500px; }
+        #pareto-container { height: 60vh; min-height: 450px; }
         
         .js-plotly-plot .plotly .bg { fill: transparent !important; }
     </style>
@@ -238,7 +238,7 @@
                 title: { text: isBks ? 'Best Known Solution' : 'Pareto Fronta (klikni na bod pro zobrazení trasy)', font: { color: '#ccd6f6', size: 14 } },
                 xaxis: { title: 'Celková Vzdálenost (f0)', color: '#ffffff', gridcolor: 'rgba(136, 146, 176, 0.1)' },
                 yaxis: { title: isBks ? '' : 'Nevyváženost (f1)', color: '#ffffff', gridcolor: 'rgba(136, 146, 176, 0.1)' },
-                margin: { l: 50, r: 20, t: 40, b: 40 },
+                margin: { l: 80, r: 30, t: 40, b: 90 },
                 plot_bgcolor: 'transparent',
                 paper_bgcolor: 'transparent',
                 hovermode: 'closest'
